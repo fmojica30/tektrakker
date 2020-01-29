@@ -7,3 +7,4 @@ class Grade(models.Model):
     assignment_id = models.CharField(max_length=36) #will be the assignment id when the database is setup
     grade = models.IntegerField(default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
+    
