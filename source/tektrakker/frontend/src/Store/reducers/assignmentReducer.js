@@ -1,11 +1,21 @@
+import * as actionTypes from "../actions/actionTypes";
+
 const initialState = {
   name: "",
   tek: "",
-  students: {}
+  students: []
 };
 
 const assignmentReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case actionTypes.GET_STUDENTS:
+      return {
+        ...state,
+        students: [...action.payload]
+      };
+    default:
+      return state;
+  }
 };
 
 export default assignmentReducer;

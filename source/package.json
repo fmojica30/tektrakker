@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@coreui/coreui": "^2.1.16",
+    "axios": "^0.19.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",

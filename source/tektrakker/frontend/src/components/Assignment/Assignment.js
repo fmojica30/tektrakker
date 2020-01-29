@@ -1,23 +1,16 @@
-import React from "react";
-import connect from "react-redux";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+
+import * as actions from "../../Store/actions/assignmentActions";
 
 const Assignment = props => {
-  // const studentRows = props.students.map(student => (
-  //   <tr>
-  //     <td>student.id</td>
-  //     <td>student.name</td>
-  //     <td>
-  //       <input type="text" />
-  //     </td>
-  //     <td>
-  //       <input
-  //         type="checkbox"
-  //         className="form-check-input"
-  //         maxLength={2}
-  //       ></input>
-  //     </td>
-  //   </tr>
-  // ));
+  const [assignmentName, setAssignmentName] = useState("");
+  const [tek, setTek] = useState("");
+  const studentList = null;
+
+  useEffect(() => {
+    props.getStudents();
+  }, []);
 
   return (
     <div>
@@ -50,20 +43,24 @@ const Assignment = props => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>student.id</td>
-              <td>student.name</td>
-              <td>
-                <input type="text" />
-              </td>
-              <td>
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  maxLength={2}
-                />
-              </td>
-            </tr>
+            {props.students
+              ? props.students.map(student => (
+                  <tr key={student.id}>
+                    <td>{student.student_id}</td>
+                    <td>{student.name}</td>
+                    <td>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        maxLength={2}
+                      />
+                    </td>
+                  </tr>
+                ))
+              : null}
           </tbody>
         </table>
         <button type="onSubmit" className="btn btn-secondary">
@@ -74,4 +71,12 @@ const Assignment = props => {
   );
 };
 
-export default Assignment;
+const mapStateToProps = state => ({
+  students: state.assignment.students
+});
+
+const mapDispatchToProps = dispatch => ({
+  getStudents: () => dispatch(actions.get_students())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Assignment);
