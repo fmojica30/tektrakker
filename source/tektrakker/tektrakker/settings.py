@@ -25,7 +25,7 @@ SECRET_KEY = 'd)#)cmv&u&p+z6t1k057w$e2xx^bpz#yqbfz()z-&#-can$h@2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tek.fmmojica.com', '64.227.54.230']
 
 
 # Application definition
