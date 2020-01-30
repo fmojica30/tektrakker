@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const NewSudentForm = props => {
-  const [studentName, setStudentName] = useState("");
-  const [studentId, setStudentId] = useState("");
+  const [studentFirstName, setStudentFirstName] = useState("");
+  const [studentLastName, setStudentLastName] = useState("");
 
   const submitStudentHandler = () => {
     const studentData = {
-      name: studentName,
-      student_id: studentId
+      first_name: studentFirstName,
+      last_name: studentLastName
     };
 
     console.log(studentData);
@@ -28,28 +28,28 @@ const NewSudentForm = props => {
         <h1 className="text-center">New Student</h1>
         <form onSubmit={submitStudentHandler}>
           <div className="form-group">
-            <label htmlFor="student-name">Student Name: </label>
+            <label htmlFor="student-name">First Name: </label>
             <input
               type="text"
               className="form-control"
               id="student-name"
               onChange={e => {
                 e.preventDefault;
-                setStudentName(e.target.value);
-                console.log(studentName);
+                setStudentFirstName(e.target.value);
+                console.log(studentFirstName);
               }}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="student-id">Student id: </label>
+            <label htmlFor="student-id">Last Name: </label>
             <input
               type="text"
               className="form-control"
               id="student-id"
               onChange={e => {
                 e.preventDefault;
-                setStudentId(e.target.value);
-                console.log(studentId);
+                setStudentLastName(e.target.value);
+                console.log(studentLastName);
               }}
             />
           </div>
