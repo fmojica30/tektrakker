@@ -6,7 +6,6 @@ import * as actions from "../../Store/actions/assignmentActions";
 const Assignment = props => {
   const [assignmentName, setAssignmentName] = useState("");
   const [tek, setTek] = useState("");
-  const studentList = null;
 
   useEffect(() => {
     props.getStudents();
@@ -23,11 +22,28 @@ const Assignment = props => {
       >
         <div className="form-group">
           <label htmlFor="assignment-name">Assignment Name: </label>
-          <input type="text" className="form-control" id="assignment-name" />
+          <input
+            type="text"
+            className="form-control"
+            id="assignment-name"
+            onChange={e => {
+              e.preventDefault();
+              setAssignmentName(e.target.value);
+              console.log(assignmentName);
+            }}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="tek-selector">Select a TEK group: </label>
-          <select className="form-control" id="tek-selector">
+          <select
+            className="form-control"
+            id="tek-selector"
+            onChange={e => {
+              e.preventDefault();
+              setTek(e.target.value);
+              console.log(tek);
+            }}
+          >
             <option>Group 1</option>
             <option>Group 2</option>
             <option>Group 3</option>
@@ -46,8 +62,8 @@ const Assignment = props => {
             {props.students
               ? props.students.map(student => (
                   <tr key={student.id}>
-                    <td>{student.student_id}</td>
-                    <td>{student.name}</td>
+                    <td>{student.id}</td>
+                    <td>{student.first_name + " " + student.last_name}</td>
                     <td>
                       <input type="text" />
                     </td>
