@@ -17,6 +17,13 @@ const Assignment = props => {
     const studentInfoList = [];
   };
 
+  const changeGradeHandler = (e, idx) => {
+    e.preventDefault();
+    const newGrade = e.target.value;
+    const lookup = idx.toString();
+    props.students[lookup].grade = newGrade;
+  };
+
   return (
     <div>
       <h1 className="text-center">New Assignment</h1>
