@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import * as actions from "../../Store/actions/assignmentActions";
 
@@ -11,6 +12,11 @@ const Assignment = props => {
     props.getStudents();
   }, []);
 
+  const submitHandler = e => {
+    e.preventDefault();
+    const studentInfoList = [];
+  };
+
   return (
     <div>
       <h1 className="text-center">New Assignment</h1>
@@ -21,7 +27,9 @@ const Assignment = props => {
         }}
       >
         <div className="form-group">
-          <label htmlFor="assignment-name">Assignment Name: </label>
+          <label htmlFor="assignment-name" value={assignmentName}>
+            Assignment Name:{" "}
+          </label>
           <input
             type="text"
             className="form-control"
@@ -34,7 +42,17 @@ const Assignment = props => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="tek-selector">Select a TEK group: </label>
+          <label
+            htmlFor="tek-selector"
+            value={tek}
+            onChange={e => {
+              e.preventDefault();
+              setTek(e.target.value);
+              console.log(tek);
+            }}
+          >
+            Select a TEK group:{" "}
+          </label>
           <select
             className="form-control"
             id="tek-selector"
