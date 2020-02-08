@@ -1,8 +1,7 @@
 import * as actionTypes from "../Actions/actionTypes";
 
 const initialState = {
-  name: "",
-  tek: "",
+  assignment: null,
   students: []
 };
 
@@ -12,6 +11,11 @@ const assignmentReducer = (state = initialState, action) => {
       return {
         ...state,
         students: [...action.payload]
+      };
+    case actionTypes.SET_ASSIGNMENT:
+      return {
+        ...state,
+        assignment: action.payload
       };
     default:
       return state;
