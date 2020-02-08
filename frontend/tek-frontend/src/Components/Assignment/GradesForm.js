@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Table, Icon } from "antd";
+import { Table, Icon, InputNumber } from "antd";
 
 import * as assignmentActions from "../../Store/Actions/assignmentActions";
 import * as actionTypes from "../../Store/Actions/actionTypes";
@@ -25,11 +25,14 @@ const GradesForm = props => {
       title: "Grade",
       dataIndex: "value",
       render: (value, row, index) => {
+        console.log(index);
         return (
-          <input
+          <InputNumber
             id={index}
-            onChange={e => changeGradeHandler(e, value, index)}
-            maxLength={2}
+            onChange={value => changeGradeHandler(value, index)}
+            min={0}
+            max={100}
+            defaultValue={0}
           />
         );
       },
@@ -37,9 +40,9 @@ const GradesForm = props => {
     }
   ];
 
-  const changeGradeHandler = (e, value, idx) => {
-    e.preventDefault();
-    const newGrade = e.target.value;
+  const changeGradeHandler = (value, idx) => {
+    // e.preventDefault();
+    const newGrade = value;
     const lookup = idx.toString();
     if (grades === "") {
       setGrades({ ...props.assignment.students });
