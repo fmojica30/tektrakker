@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from "antd";
 
@@ -23,6 +23,9 @@ const Wrapper = props => {
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/new_teacher">New Teacher</Link>
+          </Menu.Item>
+          <Menu.Item key="4">
+            <Link to="/new_assignment">New Assignment</Link>
           </Menu.Item>
         </Menu>
       </Header>
