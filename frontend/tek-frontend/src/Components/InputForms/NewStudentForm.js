@@ -60,14 +60,26 @@ const NewStudentForm = props => {
               }}
               value={lastName}
             />
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              size="large"
-            >
-              Submit
-            </Button>
+            {firstName === "" || lastName === "" ? (
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                size="large"
+                disabled
+              >
+                Submit
+              </Button>
+            ) : (
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                size="large"
+              >
+                Submit
+              </Button>
+            )}
           </Form>
         </Card>
       </Col>

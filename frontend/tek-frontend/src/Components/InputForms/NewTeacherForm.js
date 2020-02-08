@@ -31,6 +31,22 @@ const NewTeacherForm = props => {
       });
   };
 
+  // const createButton = () => {
+  //   if (firstName !== "" && lastName !== "") {
+  //     button = (
+  //       <Button
+  //         type="primary"
+  //         htmlType="submit"
+  //         className="login-form-button"
+  //         size="large"
+  //       >
+  //         Submit
+  //       </Button>
+  //     );
+  //   }
+  //   return button;
+  // };
+
   return (
     <Row gutter={[8, 8]} type="flex" style={{ alignItems: "center" }}>
       <Col span={8}></Col>
@@ -60,14 +76,26 @@ const NewTeacherForm = props => {
               }}
               value={lastName}
             />
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              size="large"
-            >
-              Submit
-            </Button>
+            {firstName === "" || lastName === "" ? (
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                size="large"
+                disabled
+              >
+                Submit
+              </Button>
+            ) : (
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                size="large"
+              >
+                Submit
+              </Button>
+            )}
           </Form>
         </Card>
       </Col>
