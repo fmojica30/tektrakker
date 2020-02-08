@@ -17,6 +17,11 @@ const assignmentReducer = (state = initialState, action) => {
         ...state,
         assignment: action.payload
       };
+    case actionTypes.RESET_ASSIGNMENT_STATE:
+      return {
+        assignment: null,
+        students: []
+      };
     default:
       return state;
   }

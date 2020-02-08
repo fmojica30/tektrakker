@@ -6,6 +6,7 @@ import * as assignmentActions from "../../Store/Actions/assignmentActions";
 import * as actionTypes from "../../Store/Actions/actionTypes";
 
 import AssignmentButton from "./Display/AssignmentButton";
+import axios from "../../axiosInstance";
 
 const GradesForm = props => {
   const [grades, setGrades] = useState("");
@@ -25,7 +26,6 @@ const GradesForm = props => {
       title: "Grade",
       dataIndex: "value",
       render: (value, row, index) => {
-        console.log(index);
         return (
           <InputNumber
             id={index}
@@ -45,7 +45,7 @@ const GradesForm = props => {
     const newGrade = value;
     const lookup = idx.toString();
     if (grades === "") {
-      setGrades({ ...props.assignment.students });
+      setGrades([...props.assignment.students]);
       setGrades(prevGrades => {
         const newObject = prevGrades[lookup];
         newObject.grade = newGrade;
@@ -54,7 +54,6 @@ const GradesForm = props => {
           [lookup]: newObject
         };
       });
-      console.log(grades);
     } else {
       setGrades(prevGrades => {
         const newObject = prevGrades[lookup];
@@ -64,8 +63,32 @@ const GradesForm = props => {
           [lookup]: newObject
         };
       });
-      console.log(grades);
     }
+  };
+
+  const submitHandler = e => {
+    e.preventDefault();
+    console.log(grades);
+    const newGrades = [];
+    for (let grade in grades) {
+      const newGrade = {
+        student: grades[grade].id,
+        group: props.assignment.assignment.group,
+        assignment: props.assignment.assignment.id,
+        grade: grades[grade].grade
+      };
+      newGrades.push(newGrade);
+    }
+    console.log(newGrades);
+    axios
+      .post("/api/assig/grade/", newGrades)
+      .then(res => {
+        console.log(res);
+        props.changeToComplete();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -74,7 +97,7 @@ const GradesForm = props => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={e => submitHandler(e)}>
         {props.assignment.assignment ? (
           <h1 style={{ marginTop: "15px" }}>
             Input Grades for : {props.assignment.assignment.name}
@@ -91,7 +114,7 @@ const GradesForm = props => {
         ) : (
           <Table dataSource={null} />
         )}
-        <AssignmentButton />
+        <AssignmentButton active={true} />
       </form>
     </div>
   );

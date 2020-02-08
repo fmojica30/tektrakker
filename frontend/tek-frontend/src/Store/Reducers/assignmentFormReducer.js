@@ -29,7 +29,7 @@ const assignmentFormReducer = (state = initialState, action) => {
         },
         currentStep: "grades"
       };
-    case actionTypes.RESET_STATE:
+    case actionTypes.RESET_FORM_STATE:
       return {
         steps: {
           assignment: "process",

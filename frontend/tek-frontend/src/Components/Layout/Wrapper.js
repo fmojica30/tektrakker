@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from "antd";
+import { connect } from "react-redux";
+
+import * as actionTypes from "../../Store/Actions/actionTypes";
 
 const { Header, Content, Footer } = Layout;
 
@@ -12,19 +15,39 @@ const Wrapper = props => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          defaultSelectedKeys={[props.nav]}
           style={{ lineHeight: "64px" }}
         >
-          <Menu.Item key="1">
+          <Menu.Item
+            key="1"
+            onClick={() => {
+              props.setHome();
+            }}
+          >
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item
+            key="2"
+            onClick={() => {
+              props.setStudent();
+            }}
+          >
             <Link to="/new_student">New Student</Link>
           </Menu.Item>
-          <Menu.Item key="3">
+          <Menu.Item
+            key="3"
+            onClick={() => {
+              props.setTeacher();
+            }}
+          >
             <Link to="/new_teacher">New Teacher</Link>
           </Menu.Item>
-          <Menu.Item key="4">
+          <Menu.Item
+            key="4"
+            onClick={() => {
+              props.setAssignment();
+            }}
+          >
             <Link to="/new_assignment">New Assignment</Link>
           </Menu.Item>
         </Menu>
@@ -44,4 +67,14 @@ const Wrapper = props => {
   );
 };
 
-export default Wrapper;
+const mapStateToProps = state => ({
+  nav: state.nav
+});
+
+const mapDispatchToProps = dispatch => ({
+  setHome: () => dispatch({ type: actionTypes.SET_NAV_HOME }),
+  setStudent: () => dispatch({ type: actionTypes.SET_NAV_NEW_STUDENT }),
+  setTeacher: () => dispatch({ type: actionTypes.SET_NAV_NEW_TEACHER }),
+  setAssignment: () => dispatch({ type: actionTypes.SET_NAV_NEW_ASSIGNMENT })
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Wrapper);
