@@ -1,7 +1,8 @@
 import * as actionTypes from "../Actions/actionTypes";
 
 const initialState = {
-  nav_state: "home"
+  nav_state: "",
+  disabled: false
 };
 
 const navReducer = (state = initialState, action) => {
@@ -21,6 +22,16 @@ const navReducer = (state = initialState, action) => {
     case actionTypes.SET_NAV_NEW_TEACHER:
       return {
         nav_state: "3"
+      };
+    case actionTypes.DEACTIVATE_NAV:
+      return {
+        ...state,
+        disabled: true
+      };
+    case actionTypes.ACTIVATE_NAV:
+      return {
+        ...state,
+        disabled: false
       };
     default:
       return state;

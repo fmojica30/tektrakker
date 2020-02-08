@@ -15,7 +15,7 @@ const Wrapper = props => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={[props.nav]}
+          defaultSelectedKeys={[props.nav.nav_state]}
           style={{ lineHeight: "64px" }}
         >
           <Menu.Item
@@ -23,6 +23,7 @@ const Wrapper = props => {
             onClick={() => {
               props.setHome();
             }}
+            disabled={props.nav.disabled}
           >
             <Link to="/">Home</Link>
           </Menu.Item>
@@ -31,6 +32,7 @@ const Wrapper = props => {
             onClick={() => {
               props.setStudent();
             }}
+            disabled={props.nav.disabled}
           >
             <Link to="/new_student">New Student</Link>
           </Menu.Item>
@@ -39,6 +41,7 @@ const Wrapper = props => {
             onClick={() => {
               props.setTeacher();
             }}
+            disabled={props.nav.disabled}
           >
             <Link to="/new_teacher">New Teacher</Link>
           </Menu.Item>
@@ -47,6 +50,7 @@ const Wrapper = props => {
             onClick={() => {
               props.setAssignment();
             }}
+            disabled={props.nav.disabled}
           >
             <Link to="/new_assignment">New Assignment</Link>
           </Menu.Item>
