@@ -6,7 +6,7 @@ Tracker for TEK performance.
 
 - Fork and clone the repo
 - Open the repo in the command line
-- install virtualenv if not already installed
+- install [virtualenv and pip](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) if not already installed
 
 ---
 
@@ -17,11 +17,24 @@ Tracker for TEK performance.
   - You should be in the virtual environment now
 - Run - `pip install -r requirements.txt`
   - This installs all dependencies for django
-- Run - `cd /frontend/tek-frontend/`
+- In a different terminal tab run - `cd /frontend/tek-frontend/`
   - This gets to you into the react development folder
   - Open a new tab in your command line
   - Run - `npm install`
   - this installs reacts dependencies
+
+---
+
+## Get the development server running
+
+- Have two terminals open one in the django folder where manage.py is available and the other in the frontend tek_frontend folder
+- In the django folder run
+  - `python manage.py runserver 8000`
+  - It needs to run on the 8000 port to work
+- In the react folder run
+  - `npm start`
+  - This starts the react app in another port
+  - Go to that port and play around with it
 
 ---
 
