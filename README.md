@@ -10,7 +10,7 @@ Tracker for TEK performance.
 
 ---
 
-## How to get activate the virtual environment and React environment
+## How to activate the virtual environment and React environment
 
 - Open the root folder of the project
 - Run `source env/bin/activate`
@@ -33,8 +33,8 @@ Tracker for TEK performance.
   - It needs to run on the 8000 port to work
 - In the react folder run
   - `npm start`
-  - This starts the react app in another port
-  - Go to that port and play around with it
+  - This starts the react app in http://localhost:3000
+  - Open a browser to start the above url
 
 ---
 
