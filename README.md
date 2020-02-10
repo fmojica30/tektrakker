@@ -17,7 +17,7 @@ Tracker for TEK performance.
   - You should be in the virtual environment now
 - Run - `pip install -r requirements.txt`
   - This installs all dependencies for django
-- In a different terminal tab run - `cd /frontend/tek-frontend/`
+- In a different terminal tab run - `cd frontend/tek-frontend/`
   - This gets to you into the react development folder
   - Open a new tab in your command line
   - Run - `npm install`
