@@ -110,6 +110,7 @@ const GradesForm = props => {
             dataSource={props.assignment.students}
             columns={columns}
             rowKey="id"
+            pagination={false}
           />
         ) : (
           <Table dataSource={null} />
