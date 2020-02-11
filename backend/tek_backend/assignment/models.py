@@ -23,3 +23,7 @@ class Grade(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.SET_NULL, null=True)
     grade = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     timestamp = models.DateTimeField(auto_now_add=True)
+    
+class PredictedGrade(object):
+     def __init__(self, arg):
+        setattr(self, score, arg)

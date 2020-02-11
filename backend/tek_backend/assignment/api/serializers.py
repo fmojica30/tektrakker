@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from assignment.models import Assignment, Grade
+from assignment.models import Assignment, Grade, PredictedGrade
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,4 +10,9 @@ class AssignmentSerializer(serializers.ModelSerializer):
 class GradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grade
+        fields = '__all__'
+
+class PredictedGradeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PredictedGrade
         fields = '__all__'
