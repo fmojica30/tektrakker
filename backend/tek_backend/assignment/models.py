@@ -26,4 +26,4 @@ class Grade(models.Model):
     
 class PredictedGrade(object):
      def __init__(self, arg):
-        setattr(self, score, arg)
+         score = arg
