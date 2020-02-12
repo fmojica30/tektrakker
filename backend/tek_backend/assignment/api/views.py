@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 
 from assignment.models import Assignment, Grade, PredictedGrade
 from .serializers import AssignmentSerializer, GradeSerializer, PredictedGradeSerializer
+from .prediction_scripts.test_p import english_grade_6_prediction
 
 class GradeViewSet(viewsets.ModelViewSet):
     serializer_class = GradeSerializer
@@ -22,16 +23,12 @@ class AssignmentViewSet(viewsets.ModelViewSet):
     queryset = Assignment.objects.all()
     serializer_class = AssignmentSerializer
 
-class GradesView(viewsets.ModelViewSet):
+class PredictionView(viewsets.ModelViewSet):
     serializer_class = PredictedGradeSerializer
     
     def retrieve(self, request, *args, **kwargs):
         data = self.get_queryset() 
-        prediction = 0
-        student = 0
-        for grade in data:
-            prediction += grade.grade
-            student = grade.student.id
+        prediction = english_grade_6_prediction(data)
         return Response({'grade':prediction, 'student':student })
       
     def get_queryset(self):
