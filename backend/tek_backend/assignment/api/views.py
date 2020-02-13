@@ -30,9 +30,11 @@ class PredictionView(viewsets.ModelViewSet):
         data = self.get_queryset() 
         prediction = english_grade_6_prediction(data)
         name = ""
+        student = None
         for grade in data:
             if (name == ''): 
-                name = grade.student.first_name + ' ' +  grade.student.last_name
+                name = grade.student.first_name + ' ' +  grade.student.last_name + ' : ' + str(grade.student.id)
+                student = grade.student.id
             else:
                 break
         return Response({'grade':prediction, 'student': name })

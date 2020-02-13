@@ -12,11 +12,10 @@ class GradeSerializer(serializers.ModelSerializer):
         model = Grade
         fields = '__all__'
 
-class PredictedGradeSerializer(serializers.Serializer):
-    score = serializers.IntegerField(read_only=True)
-   
-
-    def create(self, validated_data):
-        return PredictedGrade(validated_data)
+class PredictedGradeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PredictedGrade
+        fields = '__all__'
+    
 
     
