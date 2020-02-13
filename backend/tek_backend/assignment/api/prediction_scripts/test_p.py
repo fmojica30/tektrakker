@@ -18,7 +18,7 @@ def english_grade_6_prediction(queryset):
 
     # Separating the grades
     for grade in queryset:
-        print(grade.assignment.tek_choice)
+        # print(grade.assignment.tek_choice)
         if grade.assignment.tek_choice == 'g1':
             group1_sum += grade.grade
             group1_count +=1
@@ -27,7 +27,7 @@ def english_grade_6_prediction(queryset):
             group2_count += 1
         else:
             group3_sum += grade.grade
-            group2_count += 1
+            group3_count += 1
     #calculating averages for final calculation
     # Remember to check if there is a count that is 0
     if (group1_count != 0):
@@ -45,6 +45,7 @@ def english_grade_6_prediction(queryset):
     else: 
         group3_avg_weighted = 0
 
+    print(group3_avg_weighted)
 
     prediction = truncate((group1_avg_weighted + group2_avg_weighted + group3_avg_weighted), 2)
 
