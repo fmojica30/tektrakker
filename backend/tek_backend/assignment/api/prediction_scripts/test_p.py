@@ -1,3 +1,7 @@
+def truncate(n, decimals=0):
+    multiplier = 10 ** decimals
+    return int(n * multiplier) / multiplier
+
 def english_grade_6_prediction(queryset):
     # Group 1: 20%
     # Group 2: 42.5%
@@ -24,7 +28,6 @@ def english_grade_6_prediction(queryset):
         else:
             group3_sum += grade.grade
             group2_count += 1
-    
     #calculating averages for final calculation
     # Remember to check if there is a count that is 0
     if (group1_count != 0):
@@ -43,6 +46,6 @@ def english_grade_6_prediction(queryset):
         group3_avg_weighted = 0
 
 
-    prediction = (group1_avg_weighted + group2_avg_weighted + group3_avg_weighted)
+    prediction = truncate((group1_avg_weighted + group2_avg_weighted + group3_avg_weighted), 2)
 
     return prediction

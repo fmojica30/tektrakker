@@ -9,7 +9,6 @@ router.register(r'grade', GradeViewSet, basename='grade')
 
 urlpatterns = [
     url(r'stats/', PredictionView.as_view({'get':'retrieve'}))
-    # grade_det/(?P<student_id>.+)
 ]
 
 urlpatterns += router.urls

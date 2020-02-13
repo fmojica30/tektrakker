@@ -29,7 +29,13 @@ class PredictionView(viewsets.ModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         data = self.get_queryset() 
         prediction = english_grade_6_prediction(data)
-        return Response({'grade':prediction, 'student':student })
+        name = ""
+        for grade in data:
+            if (name == ''): 
+                name = grade.student.first_name + ' ' +  grade.student.last_name
+            else:
+                break
+        return Response({'grade':prediction, 'student': name })
       
     def get_queryset(self):
         queryset = Grade.objects.all()

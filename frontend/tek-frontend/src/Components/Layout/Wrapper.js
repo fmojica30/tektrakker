@@ -54,6 +54,9 @@ const Wrapper = props => {
           >
             <Link to="/new_assignment">New Assignment</Link>
           </Menu.Item>
+          <Menu.Item key="5" disabled={props.nav.disabled}>
+            <Link to="/class_stats">Class Statistics</Link>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>

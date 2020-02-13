@@ -8,7 +8,7 @@ import * as actionTypes from "../../Store/Actions/actionTypes";
 const CompleteForm = props => {
   useEffect(() => {
     props.deactivateNav();
-  }, []);
+  }, [props]);
 
   return (
     <div>
