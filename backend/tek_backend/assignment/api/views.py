@@ -40,10 +40,9 @@ class PredictionView(viewsets.ModelViewSet):
         return Response({'grade':prediction, 'student': name })
       
     def get_queryset(self):
-        queryset = Grade.objects.all()
         student_id = self.request.query_params.get('student_id', None)
         if student_id is not None:
-           queryset = Grade.objects.filter(student = student_id) 
+           queryset = Grade.objects.filter(student = student_id)
         return queryset
         
             

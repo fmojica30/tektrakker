@@ -37,12 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
     
+    # Other Apps installed
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'corsheaders',
+    'rest_auth.registration',
+    'rest_auth',
+    'rest_framework',
+    'rest_framework.authtoken',
+    
+    # Internal Apps
     'groups',
     'assignment'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -134,4 +145,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny'
     ]
 }
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_REQUIRED  = False
 

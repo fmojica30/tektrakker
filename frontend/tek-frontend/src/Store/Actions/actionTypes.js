@@ -14,3 +14,9 @@ export const SET_NAV_NEW_TEACHER = "SET_NAV_NEW_TEACHER";
 export const SET_NAV_NEW_ASSIGNMENT = "SET_NAV_NEW_ASSIGNMENT";
 export const DEACTIVATE_NAV = "DEACTIVATE_NAV";
 export const ACTIVATE_NAV = "ACTIVATE_NAV";
+
+//Auth Actions
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
