@@ -20,7 +20,7 @@ const Prediction = props => {
       });
   }, [props.student]);
   return (
-    <Card title={studentName} style={{ width: 250, textAlign: "center" }}>
+    <Card title={studentName} style={{ textAlign: "center" }}>
       <CircularProgressbar
         value={stat}
         text={`${stat}%`}
