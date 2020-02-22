@@ -21,7 +21,7 @@ function App() {
               <Route path="/new_teacher" component={NewTeacherForm} />
               <Route path="/new_student" component={NewStudentForm} />
               <Route path="/class_stats" component={PredictionsLayout} />
-              <Route path="/" render={() => <h1>Test</h1>} />
+              <Route path="/" render={() => <h1>Welcome to Tek Tracker</h1>} />
             </Switch>
           </Wrapper>
         </div>
