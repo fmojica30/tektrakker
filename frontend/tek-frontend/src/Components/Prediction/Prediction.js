@@ -19,6 +19,7 @@ const Prediction = props => {
         console.log(err);
       });
   }, [props.student]);
+
   return (
     <Card title={studentName} style={{ textAlign: "center" }}>
       <CircularProgressbar
